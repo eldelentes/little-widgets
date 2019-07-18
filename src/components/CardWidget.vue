@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="lw-card" v-bind:style="widgetCardStyles"> -->
   <div class="lw-card" v-bind:style="{
     width: $store.state.cardStyle.cardWidth + 'px' ,
     background: $store.state.cardStyle.cardBackground,
@@ -38,7 +37,6 @@
             color: $store.state.buttonStyle.buttonColor,
             borderRadius: $store.state.buttonStyle.buttonBorderRadius + 'em',
           }">{{ widgetButtonText }}</a>
-          <small class="lw-card__footer">Offer ends in <strong class="lw-card__counter">5</strong> minutes</small>
       </div>
   </div>
 </template>
@@ -61,7 +59,10 @@
       boxShadow() {
         return "0px " + this.$store.state.cardStyle.cardBoxShadowY + "px " + this.$store.state.cardStyle.cardBoxShadowSize + "px rgba(0,0,0, " + this.$store.state.cardStyle.cardBoxShadowOpacity + ")"
       }
-    }
+    },
+    mounted(){
+      
+    },
   }
 </script>
 
@@ -79,81 +80,70 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-  }
 
-  .lw-card__close {
-    position: absolute;
-    top: 1.5em;
-    right: 1.5em;
-    transition: all 0.2s ease;
-
-    &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-    }
-
-    &:active { transform: scale(0.8); }
-  }
-
-
-  .lw-card__close svg g {
-    fill: currentColor;
-    opacity: 0.8;
-  }
-
-  .lw-card__avatar {
-    height: 4em;
-    width: 4em;
-    border-radius: 50%;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    position: relative;
-    margin: 0 auto;
-    
-    &:before {
-      content: '';
-      border-radius: 50%;
-      padding: 0.5em;
+    &__close {
       position: absolute;
-      bottom: 0;
-      right: 0;
-      background-image: linear-gradient(180deg, #9EF77F 0%, #64EB48 100%);
-      animation: pulse 1s ease infinite;
+      top: 1.5em;
+      right: 1.5em;
+      transition: all 0.2s ease;
+
+      &:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+
+      &:active { transform: scale(0.8); }
+
+      svg g {
+        fill: currentColor;
+        opacity: 0.8;
+      }
     }
-  }
 
-  .lw-card__content { padding: 1em 0; }
+    &__avatar {
+      height: 4em;
+      width: 4em;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      position: relative;
+      margin: 0 auto;
+      
+      &:before {
+        content: '';
+        border-radius: 50%;
+        padding: 0.5em;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-image: linear-gradient(180deg, #9EF77F 0%, #64EB48 100%);
+        animation: pulse 1s ease infinite;
+      }
+    }
 
-  .lw-card__subtitle { font-size: 1em; }
+    &__content { padding: 1em 0; }
+    &__subtitle { font-size: 1em; }
+    &__title { font-size: 2em; }
 
-  .lw-card__title { font-size: 2em; }
+    &__action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  .lw-card__action {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    &__button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 1em 2em;
+      font-size: 1.2em;
+      font-weight: 600;
+      transition: all 0.2s linear;
 
-  .lw-card__button {
-    display: inline-block;
-    text-decoration: none;
-    padding: 1em 2em;
-    font-size: 1.2em;
-    font-weight: 600;
-    transition: all 0.2s linear;
-
-    &:hover { filter: hue-rotate(20deg); }
-    &:active { transform: scale(0.95); }
-  }
-  
-
-  .lw-card__footer {
-    padding: 1em 0;
-    font-size: 1em;
-    display: inline-block;
-    font-weight: 500;
-  }
+      &:hover { filter: hue-rotate(20deg); }
+      &:active { transform: scale(0.95); }
+    }
+  } 
 
   @keyframes pulse {
     0%,

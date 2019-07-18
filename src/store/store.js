@@ -7,6 +7,7 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
+        widget: null,
         content: {
             subtitle: 'Contact Eduardo',
             title: 'Customize the title of the headline',
@@ -41,5 +42,7 @@ export const store = new Vuex.Store({
     },
     getters: {
         getField,
+    },
+    actions: {
     }
 })

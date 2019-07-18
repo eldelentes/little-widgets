@@ -131,7 +131,7 @@
   import InputColor from './InputColor'
 
   export default {
-    name: 'Editor',
+    name: 'Sidebar',
     components: {
       'chrome-picker': Chrome,
       Panel,
